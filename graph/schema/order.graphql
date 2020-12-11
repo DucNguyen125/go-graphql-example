@@ -1,0 +1,5 @@
+type Order {
+  id: ID!
+  text: String!
+  done: Boolean!
+}
