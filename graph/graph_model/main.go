@@ -2,25 +2,46 @@
 
 package graph_model
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type CreateOrder struct {
+	OrderCode   string `json:"orderCode"`
+	OrderType   string `json:"orderType"`
+	Products    string `json:"products"`
+	OrderStatus string `json:"orderStatus"`
+	Quantity    int    `json:"quantity"`
+	TotalPrice  int    `json:"totalPrice"`
+}
+
+type CreateProduct struct {
+	ProductCode string `json:"productCode"`
+	ProductName string `json:"productName"`
+	Price       int    `json:"price"`
+}
+
+type DeleteOrder struct {
+	ID int `json:"id"`
+}
+
+type DeleteProduct struct {
+	ID int `json:"id"`
 }
 
 type Order struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
+	ID          *int    `json:"id"`
+	OrderCode   *string `json:"orderCode"`
+	OrderType   *string `json:"orderType"`
+	Products    *string `json:"products"`
+	OrderStatus *string `json:"orderStatus"`
+	Quantity    *int    `json:"quantity"`
+	TotalPrice  *int    `json:"totalPrice"`
+	CreatedAt   *string `json:"createdAt"`
+	UpdatedAt   *string `json:"updatedAt"`
 }
 
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
-}
-
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+type Product struct {
+	ID          *int    `json:"id"`
+	ProductCode *string `json:"productCode"`
+	ProductName *string `json:"productName"`
+	Price       *int    `json:"price"`
+	CreatedAt   *string `json:"createdAt"`
+	UpdatedAt   *string `json:"updatedAt"`
 }

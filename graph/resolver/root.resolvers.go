@@ -6,15 +6,21 @@ package resolver
 import (
 	"context"
 	"example/graph/generated"
-	"example/graph/graph_model"
-	"fmt"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input graph_model.NewTodo) (*graph_model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *mutationResolver) Ping(ctx context.Context) (string, error) {
+	return "OK", nil
+}
+
+func (r *queryResolver) Ping(ctx context.Context) (string, error) {
+	return "OK", nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 
+// Query returns generated.QueryResolver implementation.
+func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+
 type mutationResolver struct{ *Resolver }
+type queryResolver struct{ *Resolver }

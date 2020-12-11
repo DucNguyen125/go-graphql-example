@@ -7,7 +7,9 @@ import (
 	"os"
 
 	"example/routers"
+	"example/utils/mysql_util"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
@@ -15,6 +17,17 @@ func main() {
 	var err error
 	if err = godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
+	}
+	gin.SetMode(os.Getenv("RUN_MODE"))
+
+	// Connect to database
+	if err = mysql_util.Connect(); err != nil {
+		log.Fatal("Error connecting to database")
+	}
+
+	// Migrate database
+	if err = mysql_util.AutoMigrate(); err != nil {
+		log.Fatal("Error migrating to database")
 	}
 	port := os.Getenv("PORT")
 	if port == "" {
