@@ -25,6 +25,11 @@ type DeleteProduct struct {
 	ID int `json:"id"`
 }
 
+type Login struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
 type Order struct {
 	ID          *int    `json:"id"`
 	OrderCode   *string `json:"orderCode"`
@@ -44,4 +49,24 @@ type Product struct {
 	Price       *int    `json:"price"`
 	CreatedAt   *string `json:"createdAt"`
 	UpdatedAt   *string `json:"updatedAt"`
+}
+
+type Register struct {
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Email     string `json:"email"`
+	Password  string `json:"password"`
+}
+
+type User struct {
+	Token      *string `json:"token"`
+	ID         *int    `json:"id"`
+	FirstName  *string `json:"firstName"`
+	LastName   *string `json:"lastName"`
+	Email      *string `json:"email"`
+	FacebookID *string `json:"facebookId"`
+	GoogleID   *string `json:"googleId"`
+	Avatar     *string `json:"avatar"`
+	CreatedAt  *string `json:"createdAt"`
+	UpdatedAt  *string `json:"updatedAt"`
 }
