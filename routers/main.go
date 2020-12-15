@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"example/middlewares"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -8,7 +9,8 @@ import (
 
 func InitRouter() *gin.Engine {
 	router := gin.New()
-	router.Use(gin.Logger())
+	// router.Use(gin.Logger())
+	router.Use(middlewares.Logger)
 	router.Use(gin.Recovery())
 
 	router.POST("/graphql", GraphqlHandler())

@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"example/routers"
+	"example/utils/logger"
 	"example/utils/mysql_util"
 
 	"github.com/gin-gonic/gin"
@@ -19,6 +20,9 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 	gin.SetMode(os.Getenv("RUN_MODE"))
+
+	// Init logger
+	logger.Init()
 
 	// Connect to database
 	if err = mysql_util.Connect(); err != nil {
